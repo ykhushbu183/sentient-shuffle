@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupNext = document.getElementById("popup-next");
   const popupClose = document.getElementById("popup-close");
 
+  // ⬇️ Added: grab level display element (make sure HTML me id="level" ho)
+  const levelDisplay = document.getElementById("level");
+
   // state
   let currentLevel = 0;
   let attemptsLeft = 0;
@@ -49,6 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
     currentLevel = levelIndex;
     attemptsLeft = levelAttempts[levelIndex];
     attemptsDisplay.textContent = `Attempts left: ${attemptsLeft}`;
+
+    // ✅ Added: update level text each time level changes
+    if (levelDisplay) {
+      levelDisplay.textContent = `Level ${currentLevel + 1}`;
+    }
 
     const count = levelCards[levelIndex];
     const indices = shuffle(Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1)).slice(0, count);
@@ -90,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     shuffledPositions = shuffle(chosenSet);
     cardsWrap.innerHTML = "";
 
-    // Apply grid structure
     let rows = [];
     if (count === 3) rows = [2, 1];
     else if (count === 5) rows = [3, 2];
@@ -118,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardsWrap.appendChild(row);
     });
 
-    // show bottom buttons
     restartBtn.classList.remove("hidden");
     menuBtn.classList.remove("hidden");
   }
