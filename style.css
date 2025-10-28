@@ -63,7 +63,10 @@ main { width: 94%; max-width: 720px; margin: auto; text-align: center; position:
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background-size: cover;
+  background-color: #071a1d;
+  background-image: url("logo.png"); /* Sentient logo backside */
+  background-size: 50% auto;
+  background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(0,0,0,0.6);
@@ -72,8 +75,10 @@ main { width: 94%; max-width: 720px; margin: auto; text-align: center; position:
   user-select: none;
   overflow: hidden;
 }
-.card:hover { transform: scale(1.03); box-shadow: 0 0 0 4px rgba(0,229,255,0.12), 0 12px 30px rgba(0,0,0,0.6); }
-
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 0 4px rgba(0,229,255,0.12), 0 12px 30px rgba(0,0,0,0.6);
+}
 .card.revealed {
   transform: scale(1.02);
   box-shadow: 0 0 0 6px rgba(0,229,255,0.18), 0 12px 30px rgba(0,0,0,0.6);
