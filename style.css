@@ -10,10 +10,9 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* center everything vertically + horizontally */
 main {
   width: 94%;
   max-width: 720px;
@@ -21,56 +20,88 @@ main {
   text-align: center;
   position: relative;
   padding: 18px;
+}
+
+/* -------- MENU -------- */
+#menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100vh;
 }
-
 .title {
-  font-size: 1.9rem;
+  font-size: 2rem;
   color: #00e5ff;
   margin-bottom: 12px;
-  text-shadow: 0 6px 24px rgba(0,229,255,0.08);
+  text-shadow: 0 6px 24px rgba(0,229,255,0.15);
 }
-
-.hint { color: #a7dfe6; margin-bottom: 12px; }
-
-.btn, .mode-btn {
+.menu-actions {
+  margin-top: 16px;
+}
+.btn {
   background: #071a1d;
   border: 2px solid #00e5ff;
   color: #00e5ff;
-  padding: 10px 14px;
+  padding: 12px 18px;
   border-radius: 10px;
   cursor: pointer;
   margin: 6px;
   font-weight: 600;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, background 0.2s ease;
 }
-.btn.primary { background: #00e5ff; color: #031616; }
-.menu-actions { margin-top: 12px; }
+.btn:hover {
+  transform: scale(1.05);
+}
+.btn.primary {
+  background: #00e5ff;
+  color: #031616;
+}
 
-/* overlay & countdown */
+/* -------- OVERLAY -------- */
 .overlay {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(10,10,10,0.4);
+  background: rgba(10,10,10,0.6);
   transition: opacity 0.3s ease;
   z-index: 10;
 }
-.overlay.hidden { opacity: 0; pointer-events: none; }
-
-.preview, .countdown {
-  border-radius: 12px;
-  text-align: center;
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.preview.hidden, .countdown.hidden { display: none; }
+/* transparent countdown */
+.countdown {
+  font-size: 80px;
+  color: #00e5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 0 20px rgba(0,229,255,0.6);
+}
+.countdown.hidden {
+  display: none;
+}
 
+/* image preview center */
+.preview {
+  background: rgba(2,20,24,0.85);
+  border: 2px solid rgba(0,229,255,0.18);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+}
+.preview.hidden {
+  display: none;
+}
 .preview img {
   width: 320px;
   height: 320px;
@@ -80,23 +111,15 @@ main {
   margin-top: 8px;
 }
 
-/* transparent countdown — centered */
-.countdown {
-  font-size: 80px;
-  color: #00e5ff;
-  font-weight: 700;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+/* -------- GAME -------- */
+#game {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  inset: 0;
-  z-index: 12;
+  height: 100vh;
 }
 
-/* controls */
 .controls-container {
   border: 2px solid rgba(0,229,255,0.2);
   border-radius: 12px;
@@ -104,14 +127,24 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   background: rgba(0,15,18,0.6);
   box-shadow: 0 0 12px rgba(0,229,255,0.05);
+  width: 100%;
+  max-width: 500px;
 }
-.moves { font-weight: 700; color: #ffd479; }
 
-/* puzzle box centered */
-.puzzle-wrapper { display: flex; justify-content: center; align-items: center; }
+.moves {
+  font-weight: 700;
+  color: #ffd479;
+}
+
+/* Puzzle Centering */
+.puzzle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .puzzle-box {
   width: 460px;
   height: 460px;
@@ -120,24 +153,20 @@ main {
   background: #00181b;
   padding: 10px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  position: relative;
-  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
 }
 .puzzle {
   width: 100%;
   height: 100%;
   display: grid;
   gap: 6px;
-  position: relative;
-  justify-content: center;
   align-content: center;
+  justify-items: center;
 }
 
-/* card */
+/* Cards */
 .card {
   width: 100%;
   height: 100%;
@@ -150,45 +179,50 @@ main {
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(0,0,0,0.6);
   transition: transform 220ms ease, box-shadow 220ms ease, opacity 180ms ease;
-  position: relative;
-  user-select: none;
-  overflow: hidden;
 }
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 0 4px rgba(0,229,255,0.12), 0 12px 30px rgba(0,0,0,0.6);
 }
 .card.revealed {
   transform: scale(1.02);
-  box-shadow: 0 0 0 6px rgba(0,229,255,0.18), 0 12px 30px rgba(0,0,0,0.6);
 }
 
-/* grids */
+/* Grid layouts */
 .puzzle.cols-3 { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
 .puzzle.cols-5 { grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(5, 1fr); }
 .puzzle.cols-7 { grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(7, 1fr); }
 
-/* popup */
-.popup { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.75); z-index: 20; }
-.popup.hidden { display:none; }
+/* -------- Popup -------- */
+.popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.75);
+  z-index: 20;
+}
+.popup.hidden {
+  display: none;
+}
 .popup-inner {
-  background:#071a1d;
-  padding:20px;
-  border-radius:12px;
-  border:2px solid rgba(0,229,255,0.12);
-  text-align:center;
-  color:#e9fbff;
+  background: #071a1d;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(0,229,255,0.12);
+  text-align: center;
+  color: #e9fbff;
 }
 .popup-inner img {
   width: 240px;
   height: 240px;
   object-fit: cover;
-  border-radius:8px;
-  margin-top:10px;
-  border:2px solid rgba(0,229,255,0.06);
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 2px solid rgba(0,229,255,0.06);
 }
 
-/* footer */
+/* -------- Footer -------- */
 #footer {
   position: fixed;
   bottom: 15px;
@@ -199,12 +233,22 @@ main {
   color: #aaa;
   z-index: 3;
 }
-#footer a { color: #ff66a3; text-decoration: none; }
-#footer a:hover { text-decoration: underline; }
+#footer a {
+  color: #ff66a3;
+  text-decoration: none;
+}
+#footer a:hover {
+  text-decoration: underline;
+}
 
-/* responsive */
+/* -------- Responsive -------- */
 @media (max-width: 640px) {
-  .puzzle-box { width: 92vw; height: 92vw; }
-  .preview img, .popup-inner img { width: 86vw; height: 86vw; }
-  .puzzle.cols-5 .card, .puzzle.cols-7 .card { border-radius: 6px; }
+  .puzzle-box {
+    width: 92vw;
+    height: 92vw;
+  }
+  .preview img, .popup-inner img {
+    width: 86vw;
+    height: 86vw;
+  }
 }
