@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dog Shuffle</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1 class="title">Dog Shuffle</h1>
+    <p class="hint">Remember the dog position then find the correct one!</p>
+
+    <div id="game" class="game-container active">
+      <div id="level-display">Level 1</div>
+      <div id="cards" class="puzzle"></div>
+      <div id="options" class="menu-actions"></div>
+      <div id="message" class="hint"></div>
+    </div>
+
+    <div id="popup" class="popup hidden">
+      <div class="popup-inner">
+        <h2 id="popup-text"></h2>
+        <button id="next-btn" class="btn primary">Next Level</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
