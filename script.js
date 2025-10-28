@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const TOTAL_IMAGES = 10;
-  const PREVIEW_TIME_MS = 5000;
+  const PREVIEW_TIME_MS = 3000;
   const levelCards = [3, 5, 7];
   const levelAttempts = [1, 2, 3]; // different attempts per level
 
