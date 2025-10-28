@@ -1,30 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dog Shuffle</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="bgCanvas"></canvas>
+  <div class="game-container">
+   <main id="app">
 
-  <main class="game-container" id="game">
-    <h1 class="title">Dog Shuffle</h1>
-    <p class="hint">Find the correct dog after shuffle</p>
+    <!-- MENU -->
+    <section id="menu" class="screen active">
+      <h1 class="title">🐶 Dog Shuffle</h1>
+      <p class="hint">Memorize the card, then find it after the shuffle</p>
+      <div class="menu-actions">
+        <button id="start-btn" class="btn primary">▶ Start Game</button>
+      </div>
+      <p class="hint" style="font-size:0.95rem">Levels: 1 → 3 cards, 2 → 5 cards, 3 → 7 cards. 3 wrong attempts → Reset to Level 1.</p>
+    </section>
 
-    <div id="level-info">Level 1</div>
-    <div class="puzzle-wrapper">
-      <div id="cards-container"></div>
+    <!-- OVERLAY: preview / countdown -->
+    <div id="overlay" class="overlay hidden">
+      <div id="countdown" class="countdown hidden"><span id="count-num">5</span></div>
+      <div id="preview" class="preview hidden">
+        <h3>👀 Remember this dog!</h3>
+        <img id="preview-img" src="" alt="preview image" />
+      </div>
     </div>
 
-    <div id="options-container"></div>
+    <!-- GAME -->
+    <section id="game" class="screen hidden">
+      <div class="controls-container">
+        <div class="left-controls">
+          <div id="level-display" class="hint">Level 1</div>
+        </div>
+        <div class="right-controls">
+          <span id="attempts" class="moves">Attempts left: 3</span>
+        </div>
+      </div>
 
-    <div id="message"></div>
+      <div class="puzzle-wrapper">
+        <div id="puzzle-box" class="puzzle-box">
+          <div id="cards" class="puzzle"></div>
+        </div>
+      </div>
 
-    <button id="next-btn" class="btn hidden">Next Level</button>
-    <button id="restart-btn" class="btn hidden">Restart</button>
+      <div class="menu-actions">
+        <button id="restart-btn" class="btn">Restart</button>
+        <button id="menu-btn" class="btn">Menu</button>
+      </div>
+    </section>
+
+    <!-- POPUP -->
+    <div id="popup" class="popup hidden">
+      <div class="popup-inner">
+        <h2 id="popup-title">...</h2>
+        <p id="popup-desc" class="hint"></p>
+        <img id="popup-img" src="" alt="result image" />
+        <div style="margin-top:14px">
+          <button id="popup-next" class="btn primary">Continue</button>
+          <button id="popup-close" class="btn">Close</button>
+        </div>
+      </div>
+    </div>
+
   </main>
+</div>
 
   <div id="footer">
     made by <a href="https://x.com/sonuwork37" target="_blank">@sonuwork37</a>
