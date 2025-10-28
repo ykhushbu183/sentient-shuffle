@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // helper to build image path
   const imgPath = (i) => `images/img${i}.png`;
-  const backPath = () => `images/back.png`;
+  const backPath = () => `images/logo`;
 
   // simple shuffle
   function shuffle(arr) {
