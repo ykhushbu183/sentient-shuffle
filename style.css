@@ -13,8 +13,25 @@ body {
   overflow-x: hidden;
 }
 
-main { width: 94%; max-width: 720px; margin: auto; text-align: center; position: relative; padding: 18px; }
-.title { font-size: 1.9rem; color: #00e5ff; margin-bottom: 6px; text-shadow: 0 6px 24px rgba(0,229,255,0.08); }
+/* game ko screen ke beech me center karne ke liye */
+main {
+  width: 94%;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 18px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.title {
+  font-size: 1.9rem;
+  color: #00e5ff;
+  margin-bottom: 6px;
+  text-shadow: 0 6px 24px rgba(0,229,255,0.08);
+}
+
 .hint { color: #a7dfe6; margin-bottom: 12px; }
 
 .btn, .mode-btn {
@@ -49,7 +66,7 @@ main { width: 94%; max-width: 720px; margin: auto; text-align: center; position:
 .preview.hidden, .countdown.hidden { display: none; }
 .preview img { width: 320px; height: 320px; object-fit: cover; border-radius: 8px; border: 3px solid rgba(0,229,255,0.08); margin-top: 8px; }
 
-/* updated countdown to be centered on screen */
+/* countdown center fix */
 .countdown {
   position: fixed;
   top: 50%;
