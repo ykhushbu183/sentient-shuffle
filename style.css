@@ -48,7 +48,26 @@ main { width: 94%; max-width: 720px; margin: auto; text-align: center; position:
 }
 .preview.hidden, .countdown.hidden { display: none; }
 .preview img { width: 320px; height: 320px; object-fit: cover; border-radius: 8px; border: 3px solid rgba(0,229,255,0.08); margin-top: 8px; }
-.countdown { font-size: 64px; color: #00e5ff; min-width: 120px; min-height: 120px; display:flex; align-items:center; justify-content:center; }
+
+/* updated countdown to be centered on screen */
+.countdown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  color: #00e5ff;
+  min-width: 120px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2,20,24,0.95);
+  border: 2px solid rgba(0,229,255,0.18);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+  z-index: 30;
+}
 
 .controls-container { border: 2px solid rgba(0,229,255,0.2); border-radius: 12px; padding: 10px 16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; background: rgba(0,15,18,0.6); box-shadow: 0 0 12px rgba(0,229,255,0.05); }
 .moves { font-weight: 700; color: #ffd479; }
