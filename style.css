@@ -15,24 +15,24 @@ body {
 
 /* game ko screen ke beech me center karne ke liye */
 main {
-  width: 94%;
-  max-width: 720px;
+  width: 96%;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  padding: 18px;
+  padding: 20px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .title {
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   color: #00e5ff;
-  margin-bottom: 6px;
-  text-shadow: 0 6px 24px rgba(0,229,255,0.08);
+  margin-bottom: 8px;
+  text-shadow: 0 6px 24px rgba(0,229,255,0.1);
 }
 
-.hint { color: #a7dfe6; margin-bottom: 12px; }
+.hint { color: #a7dfe6; margin-bottom: 16px; }
 
 .btn, .mode-btn {
   background: #071a1d;
@@ -86,13 +86,45 @@ main {
   z-index: 30;
 }
 
-.controls-container { border: 2px solid rgba(0,229,255,0.2); border-radius: 12px; padding: 10px 16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; background: rgba(0,15,18,0.6); box-shadow: 0 0 12px rgba(0,229,255,0.05); }
+/* controls aur timer section */
+.controls-container {
+  border: 2px solid rgba(0,229,255,0.15);
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  background: transparent !important; /* transparent timer background */
+  box-shadow: none !important;
+}
 .moves { font-weight: 700; color: #ffd479; }
 
 /* puzzle box */
-.puzzle-wrapper { display:flex; justify-content:center; }
-.puzzle-box { width: 460px; height: 460px; border-radius: 14px; border: 4px solid rgba(0,229,255,0.12); background: #00181b; padding: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); position: relative; z-index: 4; display:flex; align-items:center; justify-content:center; }
-.puzzle { width: 100%; height: 100%; display: grid; gap: 6px; position: relative; align-content: stretch; align-items: stretch; }
+.puzzle-wrapper { display: flex; justify-content: center; }
+.puzzle-box {
+  width: 540px;
+  height: 540px;
+  border-radius: 16px;
+  border: 4px solid rgba(0,229,255,0.15);
+  background: #00181b;
+  padding: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.puzzle {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 6px;
+  position: relative;
+  align-content: stretch;
+  align-items: stretch;
+}
 
 /* card styles */
 .card {
@@ -100,7 +132,7 @@ main {
   height: 100%;
   border-radius: 10px;
   background-color: #071a1d;
-  background-image: url("logo.png"); /* Sentient logo backside */
+  background-image: url("logo.png");
   background-size: 50% auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -132,13 +164,23 @@ main {
 .popup-inner img { width: 240px; height: 240px; object-fit: cover; border-radius:8px; margin-top:10px; border:2px solid rgba(0,229,255,0.06); }
 
 /* footer */
-#footer { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); font-size: 14px; text-align: center; color: #aaa; z-index: 3; }
+#footer {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  text-align: center;
+  color: #aaa;
+  z-index: 3;
+}
 #footer a { color: #ff66a3; text-decoration: none; }
 #footer a:hover { text-decoration: underline; }
 
 /* responsive */
 @media (max-width: 640px) {
-  .puzzle-box { width: 92vw; height: 92vw; }
+  main { transform: translateY(-45%); }
+  .puzzle-box { width: 94vw; height: 94vw; }
   .preview img, .popup-inner img { width: 86vw; height: 86vw; }
   .puzzle.cols-5 .card, .puzzle.cols-7 .card { border-radius: 6px; }
 }
