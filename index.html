@@ -2,72 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sentient Dobby Shuffle</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- ✅ Make sure style.css is in same folder as index.html -->
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+  <!-- Background canvas -->
   <canvas id="bgCanvas"></canvas>
+
   <div class="game-container">
-   <main id="app">
-
-    <section id="menu" class="screen active">
-      <h1 class="title">🐶 Sentient Dobby Shuffle</h1>
-      <p class="hint">Memorize the card, then find it after the shuffle</p>
-      <div class="menu-actions">
-        <button id="start-btn" class="btn primary">▶ Start Game</button>
-      </div>
-    </section>
-
-    <div id="overlay" class="overlay hidden">
-      <div id="countdown" class="countdown hidden"><span id="count-num">5</span></div>
-      <div id="preview" class="preview hidden">
-        <h3>👀 Remember this dog!</h3>
-        <img id="preview-img" src="" alt="preview image" />
-      </div>
-    </div>
-
-    <section id="game" class="screen hidden">
-      <div class="controls-container">
-        <div class="left-controls">
-          <div id="level-display" class="hint">Level 1</div>
+    <main id="app">
+      <!-- Menu screen -->
+      <section id="menu" class="screen active">
+        <h1 class="title">🐶 Sentient Dobby Shuffle</h1>
+        <p class="hint">Memorize the card, then find it after the shuffle</p>
+        <div class="menu-actions">
+          <button id="start-btn" class="btn primary">▶ Start Game</button>
         </div>
-        <div class="right-controls">
-          <span id="attempts" class="moves">Attempts left: 3</span>
+      </section>
+
+      <!-- Preview overlay -->
+      <div id="overlay" class="overlay hidden">
+        <div id="countdown" class="countdown hidden"><span id="count-num">5</span></div>
+        <div id="preview" class="preview hidden">
+          <h3>👀 Remember this dog!</h3>
+          <img id="preview-img" src="" alt="preview image" />
         </div>
       </div>
 
-      <div class="puzzle-wrapper">
-        <div id="puzzle-box" class="puzzle-box">
-          <div id="cards" class="puzzle"></div>
+      <!-- Game section -->
+      <section id="game" class="screen hidden">
+        <div class="controls-container">
+          <div class="left-controls">
+            <div id="level-display" class="hint">Level 1</div>
+          </div>
+          <div class="right-controls">
+            <span id="attempts" class="moves">Attempts left: 3</span>
+          </div>
+        </div>
+
+        <div class="puzzle-wrapper">
+          <div id="puzzle-box" class="puzzle-box">
+            <div id="cards" class="puzzle"></div>
+          </div>
+        </div>
+
+        <div class="menu-actions">
+          <button id="restart-btn" class="btn">Restart</button>
+          <button id="menu-btn" class="btn">Menu</button>
+        </div>
+      </section>
+
+      <!-- Popup -->
+      <div id="popup" class="popup hidden">
+        <div class="popup-inner">
+          <h2 id="popup-title">...</h2>
+          <p id="popup-desc" class="hint"></p>
+          <img id="popup-img" src="" alt="result image" />
+          <div style="margin-top:14px">
+            <button id="popup-next" class="btn primary">Continue</button>
+            <button id="popup-close" class="btn">Close</button>
+          </div>
         </div>
       </div>
-
-      <div class="menu-actions">
-        <button id="restart-btn" class="btn">Restart</button>
-        <button id="menu-btn" class="btn">Menu</button>
-      </div>
-    </section>
-
-    <div id="popup" class="popup hidden">
-      <div class="popup-inner">
-        <h2 id="popup-title">...</h2>
-        <p id="popup-desc" class="hint"></p>
-        <img id="popup-img" src="" alt="result image" />
-        <div style="margin-top:14px">
-          <button id="popup-next" class="btn primary">Continue</button>
-          <button id="popup-close" class="btn">Close</button>
-        </div>
-      </div>
-    </div>
-
-  </main>
-</div>
+    </main>
+  </div>
 
   <div id="footer">
     made by <a href="https://x.com/sonuwork37" target="_blank">@sonuwork37</a>
   </div>
 
-  <script src="script.js"></script>
+  <!-- ✅ Make sure script.js is in same folder as index.html -->
+  <script src="./script.js"></script>
 </body>
 </html>
