@@ -185,6 +185,13 @@ main {
   border:2px solid rgba(0,229,255,0.06);
 }
 
+/* ✅ Hide close button inside popup */
+.popup-inner .btn:nth-child(2),
+.popup-inner .close-btn,
+.popup-inner button:last-child {
+  display: none !important;
+}
+
 /* footer */
 #footer {
   position: fixed;
