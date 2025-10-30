@@ -1,9 +1,11 @@
+// 🐶 Sentient Dobby Shuffle — Clean Script (fixed & stable)
 document.addEventListener("DOMContentLoaded", () => {
   const TOTAL_IMAGES = 10;
   const PREVIEW_TIME_MS = 3000;
   const levelCards = [3, 5, 7];
   const levelAttempts = [1, 2, 3];
 
+  // DOM elements
   const menu = document.getElementById("menu");
   const startBtn = document.getElementById("start-btn");
   const overlay = document.getElementById("overlay");
@@ -23,8 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupNext = document.getElementById("popup-next");
   const popupClose = document.getElementById("popup-close");
 
-  const levelDisplay = document.getElementById("level");
+  // 🧩 Corrected ID
+  const levelDisplay = document.getElementById("level-display");
 
+  // Game state
   let currentLevel = 0;
   let attemptsLeft = 0;
   let chosenSet = [];
@@ -35,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const imgPath = (i) => `images/img${i}.png`;
   const backPath = () => `images/logo.png`;
 
+  // 🔀 Shuffle helper
   function shuffle(arr) {
     const a = arr.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -44,20 +49,19 @@ document.addEventListener("DOMContentLoaded", () => {
     return a;
   }
 
+  // 🎬 Start Game
   function startGameAt(levelIndex) {
     currentLevel = levelIndex;
     attemptsLeft = levelAttempts[levelIndex];
     attemptsDisplay.textContent = `Attempts left: ${attemptsLeft}`;
-
-    if (levelDisplay) {
-      levelDisplay.textContent = `Level ${currentLevel + 1}`;
-    }
+    levelDisplay.textContent = `Level ${currentLevel + 1}`;
 
     const count = levelCards[levelIndex];
     const indices = shuffle(Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1)).slice(0, count);
-    chosenSet = indices.map(i => imgPath(i));
+    chosenSet = indices.map((i) => imgPath(i));
     targetImage = chosenSet[Math.floor(Math.random() * chosenSet.length)];
 
+    // Preview phase
     previewImg.src = targetImage;
     overlay.classList.remove("hidden");
     previewBox.classList.remove("hidden");
@@ -65,27 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let remaining = Math.ceil(PREVIEW_TIME_MS / 1000);
     countNum.textContent = remaining;
+
     const timer = setInterval(() => {
       remaining--;
       if (remaining > 0) countNum.textContent = remaining;
       else clearInterval(timer);
     }, 1000);
 
+    // After preview -> start game
     setTimeout(() => {
-      overlay.classList.add("fade-out");
-      previewBox.classList.add("fade-out");
-      setTimeout(() => {
-        overlay.classList.add("hidden");
-        previewBox.classList.add("hidden");
-        overlay.classList.remove("fade-out");
-        previewBox.classList.remove("fade-out");
-        showShuffledCards();
-        menu.classList.remove("active");
-        game.classList.add("active");
-      }, 300);
+      overlay.classList.add("hidden");
+      previewBox.classList.add("hidden");
+      showShuffledCards();
+      menu.classList.remove("active");
+      game.classList.add("active");
     }, PREVIEW_TIME_MS);
   }
 
+  // 🧩 Show shuffled cards
   function showShuffledCards() {
     const count = levelCards[currentLevel];
     shuffledPositions = shuffle(chosenSet);
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (count === 7) rows = [4, 3];
 
     let index = 0;
-    rows.forEach(rowCount => {
+    rows.forEach((rowCount) => {
       const row = document.createElement("div");
       row.className = "card-row";
       row.style.display = "flex";
@@ -122,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menuBtn.classList.remove("hidden");
   }
 
+  // 🖱️ Handle card click
   function onCardClick(e) {
     if (isWaiting) return;
     const card = e.currentTarget;
@@ -144,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // 🪄 Reveal card
   function revealCard(cardEl, frontImage) {
     cardEl.classList.add("revealed");
     cardEl.style.backgroundImage = `url('${frontImage}')`;
@@ -151,13 +154,15 @@ document.addEventListener("DOMContentLoaded", () => {
     cardEl.style.backgroundPosition = "center";
   }
 
+  // 🎉 Popup
   function showPopup(isWin) {
     popup.classList.remove("hidden");
     if (isWin) {
       popupTitle.textContent = "🎉 Correct!";
       popupDesc.textContent = "You found the dog — next level!";
       popupImg.src = targetImage;
-      popupNext.textContent = (currentLevel < levelCards.length - 1) ? "Next Level" : "Finish";
+      popupNext.textContent =
+        currentLevel < levelCards.length - 1 ? "Next Level" : "Finish";
     } else {
       popupTitle.textContent = "😕 Oops!";
       popupDesc.textContent = "No attempts left. Restarting from Level 1.";
@@ -166,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // 🔘 Popup buttons
   popupNext.addEventListener("click", () => {
     popup.classList.add("hidden");
     isWaiting = false;
@@ -187,15 +193,9 @@ document.addEventListener("DOMContentLoaded", () => {
     isWaiting = false;
   });
 
-  startBtn.addEventListener("click", () => {
-    startGameAt(0);
-  });
-
-  restartBtn.addEventListener("click", () => {
-    currentLevel = 0;
-    startGameAt(0);
-  });
-
+  // 🎮 Menu buttons
+  startBtn.addEventListener("click", () => startGameAt(0));
+  restartBtn.addEventListener("click", () => startGameAt(0));
   menuBtn.addEventListener("click", () => {
     popup.classList.add("hidden");
     game.classList.remove("active");
