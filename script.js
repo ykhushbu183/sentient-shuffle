@@ -2,9 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const TOTAL_IMAGES = 10;
   const PREVIEW_TIME_MS = 3000;
   const levelCards = [3, 5, 7];
-  const levelAttempts = [1, 2, 3]; // different attempts per level
+  const levelAttempts = [1, 2, 3];
 
-  // elements
   const menu = document.getElementById("menu");
   const startBtn = document.getElementById("start-btn");
   const overlay = document.getElementById("overlay");
@@ -24,10 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupNext = document.getElementById("popup-next");
   const popupClose = document.getElementById("popup-close");
 
-  // ⬇️ Added: grab level display element (make sure HTML me id="level" ho)
   const levelDisplay = document.getElementById("level");
 
-  // state
   let currentLevel = 0;
   let attemptsLeft = 0;
   let chosenSet = [];
@@ -47,13 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return a;
   }
 
-  // Start game
   function startGameAt(levelIndex) {
     currentLevel = levelIndex;
     attemptsLeft = levelAttempts[levelIndex];
     attemptsDisplay.textContent = `Attempts left: ${attemptsLeft}`;
 
-    // ✅ Added: update level text each time level changes
     if (levelDisplay) {
       levelDisplay.textContent = `Level ${currentLevel + 1}`;
     }
@@ -63,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chosenSet = indices.map(i => imgPath(i));
     targetImage = chosenSet[Math.floor(Math.random() * chosenSet.length)];
 
-    // preview phase
     previewImg.src = targetImage;
     overlay.classList.remove("hidden");
     previewBox.classList.remove("hidden");
@@ -92,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, PREVIEW_TIME_MS);
   }
 
-  // card grid layout
   function showShuffledCards() {
     const count = levelCards[currentLevel];
     shuffledPositions = shuffle(chosenSet);
