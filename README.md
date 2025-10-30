@@ -1,4 +1,4 @@
-# 🧠 Sentient Shuffle
+# 🧠 Sentient Dobby Shuffle
 
 A futuristic **memory puzzle game** built with **React + CSS animations**, featuring neon aesthetics, smooth transitions, and multiple difficulty levels (3×3, 5×5, 7×7).  
 Challenge your mind, match the tiles, and test your memory power 🔥  
