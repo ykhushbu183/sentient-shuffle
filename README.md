@@ -19,4 +19,4 @@ Challenge your mind, match the tiles, and test your memory power 🔥
 
 ## 🖼️ Preview
 
-
+![Game Screenshot](./preview.png)
