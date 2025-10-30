@@ -1,7 +1,4 @@
 {
-  "builds": [
-    { "src": "game.html", "use": "@vercel/static" }
-  ],
   "routes": [
     { "src": "/(.*)", "dest": "/game.html" }
   ]
